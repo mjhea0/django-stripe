@@ -15,9 +15,10 @@ Use this project/app to integrate Django and Stripe with a simple user registrat
 1. clone the repo
 2. setup/activate a virtualenv
 3. install the requirements
-4. sync the db / setup superuser
-5. update your stripe api keys
-6. update stripe subscription plan in *payments/views.py*
+4. update the database
+5. sync the db / setup superuser
+6. update your stripe api keys
+7. update stripe subscription plan in *payments/views.py*
 
 ## Todo
 
