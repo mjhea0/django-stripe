@@ -1,7 +1,7 @@
 django-stripe
 =============
 
-Use this project/app to integrate Django and Stripe with a simple user registration.
+Use this project/app to integrate Django and Stripe with a simple user registration. Right now the application is setup so that in order for a user to register s/he must purchase a recurring subscription service.
 
 - Django==1.5.1
 - South==0.8.1
