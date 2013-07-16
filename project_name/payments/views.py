@@ -2,7 +2,7 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from payments.forms import *
+from payments.forms import PaymentForm, SignIn, CardForm, UserForm
 from payments.models import User
 import project_name.settings as settings
 import stripe
