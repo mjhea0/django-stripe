@@ -59,12 +59,18 @@ def register(request):
     form = UserForm(request.POST)
     if form.is_valid():
 
-      # update based on your billing model
+      # update based on your billing method
       customer = stripe.Customer.create(
         description = form.cleaned_data['email'],
         card = form.cleaned_data['stripe_token'],
         plan="gold",
       )
+      # customer = stripe.Charge.create(
+      #   description = form.cleaned_data['email'],
+      #   card = form.cleaned_data['stripe_token'],
+      #   amount="5000",
+      #   currency="usd"
+      # )
 
       user = User(
         name = form.cleaned_data['name'],

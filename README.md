@@ -1,7 +1,7 @@
 django-stripe
 =============
 
-Use this project/app to integrate Django and Stripe with a simple user registration. Right now the application is setup so that in order for a user to register s/he must purchase a recurring subscription service.
+Use this project/app to integrate Django and Stripe with a simple user registration. Registration requires that a payment (either one-time or recurring) is made.
 
 - Django==1.5.1
 - South==0.8.1
@@ -18,13 +18,35 @@ Use this project/app to integrate Django and Stripe with a simple user registrat
 4. update the rdms (sqlite, mysql, postgres)
 5. sync the db / setup a superuser
 6. update your stripe api keys
-7. update stripe subscription plan in *payments/views.py*
+7. choose your billing method (see below)
+
+## Billing Method (edit *payments/views.py*)
+
+- subscription
+
+      customer = stripe.Customer.create(
+          description = form.cleaned_data['email'],
+          card = form.cleaned_data['stripe_token'],
+          plan="gold",
+      )
+
+    make sure to setup a plan on stripe
+
+- one time 
+
+      customer = stripe.Charge.create(
+          description = form.cleaned_data['email'],
+          card = form.cleaned_data['stripe_token'],
+          amount="5000",
+          currency="usd"
+      )       
+
+    make sure to update amount and remove the ability to edit the customer's credit card info from *user.html*
 
 ## Todo
 
-1. setup support for one time payments (based on recurring model right now)
-2. create better documentation
-3. add unit tests
+1. create better documentation
+2. add unit tests
 
 ## Screenshot
 
