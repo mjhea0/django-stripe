@@ -24,22 +24,22 @@ Use this project/app to integrate Django and Stripe with a simple user registrat
 
 - subscription
 
-       customer = stripe.Customer.create(
-           description = form.cleaned_data['email'],
-           card = form.cleaned_data['stripe_token'],
-           plan="gold",
-       )
+        customer = stripe.Customer.create(
+            description = form.cleaned_data['email'],
+            card = form.cleaned_data['stripe_token'],
+            plan="gold",
+        )
 
     make sure to setup a plan on stripe
 
 - one time 
 
-       customer = stripe.Charge.create(
-           description = form.cleaned_data['email'],
-           card = form.cleaned_data['stripe_token'],
-           amount="5000",
-           currency="usd"
-       )       
+        customer = stripe.Charge.create(
+            description = form.cleaned_data['email'],
+            card = form.cleaned_data['stripe_token'],
+            amount="5000",
+            currency="usd"
+        )       
 
     make sure to update amount and remove the ability to edit the customer's credit card info from *user.html*
 
