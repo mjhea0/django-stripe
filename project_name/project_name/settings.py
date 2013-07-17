@@ -8,7 +8,6 @@ PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 SITE_ROOT = os.path.dirname(PROJECT_ROOT)
 STRIPE_SECRET = 'sk_test_h36oicOrlA7ATkI9JJ6dUGyA'
 STRIPE_PUBLISHABLE = 'pk_test_8Xho4FfArFFuQspdH8V1KlHS'
-BCRYPT_ROUNDS = 15
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

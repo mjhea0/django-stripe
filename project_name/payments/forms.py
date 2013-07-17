@@ -5,7 +5,7 @@ class PaymentForm(forms.Form):
     def addError(self, message):
         self._errors[NON_FIELD_ERRORS] = self.error_class([message])
 
-class SignIn(PaymentForm):
+class SigninForm(PaymentForm):
     email = forms.EmailField(required = True)
     password = forms.CharField(required = True, widget=forms.PasswordInput(render_value=False))
   

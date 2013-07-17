@@ -2,7 +2,7 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from payments.forms import PaymentForm, SignIn, CardForm, UserForm
+from payments.forms import PaymentForm, SigninForm, CardForm, UserForm
 from payments.models import User
 import project_name.settings as settings
 import stripe
@@ -24,7 +24,7 @@ def home(request):
 def sign_in(request):
     user = None
     if request.method == 'POST':
-        form = SignIn(request.POST)
+        form = SigninForm(request.POST)
         if form.is_valid():
             results = User.objects.filter(email=form.cleaned_data['email'])
             if len(results) == 1:
@@ -36,7 +36,7 @@ def sign_in(request):
             else:
               form.addError('Incorrect email address or password')
     else:
-      form = SignIn()
+      form = SigninForm()
       
     print form.non_field_errors()
 
@@ -59,9 +59,10 @@ def register(request):
         form = UserForm(request.POST)
         if form.is_valid():
 
-            # update based on your billing method
+            #update based on your billing method (subscription vs one time)
             customer = stripe.Customer.create(
-              description = form.cleaned_data['email'],
+              email = form.cleaned_data['email'],
+              description = form.cleaned_data['name'],
               card = form.cleaned_data['stripe_token'],
               plan="gold",
             )
