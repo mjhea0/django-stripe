@@ -3,4 +3,3 @@ South==0.8.1
 py-bcrypt==0.3
 requests==1.2.3
 stripe==1.9.2
-wsgiref==0.1.2

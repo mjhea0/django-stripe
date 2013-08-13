@@ -8,7 +8,6 @@ Use this project/app to integrate Django and Stripe with a simple user registrat
 - py-bcrypt==0.3
 - requests==1.2.3
 - stripe==1.9.2
-- wsgiref==0.1.2
 
 ## Setup
 
