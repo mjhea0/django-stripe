@@ -24,6 +24,7 @@ Use this project/app to integrate Django and Stripe with a simple user registrat
 - subscription
 
         customer = stripe.Customer.create(
+            email = form.cleaned_data['email'],
             description = form.cleaned_data['email'],
             card = form.cleaned_data['stripe_token'],
             plan="gold",
@@ -46,7 +47,6 @@ Use this project/app to integrate Django and Stripe with a simple user registrat
 
 1. create better documentation
 2. add unit tests
-3. extend the User model with a user profile rather than creating a whole new table
 
 ## Screenshot
 
