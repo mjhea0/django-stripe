@@ -6,8 +6,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 SITE_ROOT = os.path.dirname(PROJECT_ROOT)
-STRIPE_SECRET = 'sk_test_h36oicOrlA7ATkI9JJ6dUGyA'
-STRIPE_PUBLISHABLE = 'pk_test_8Xho4FfArFFuQspdH8V1KlHS'
+STRIPE_SECRET = 'sk_test_FbuuoUeZawRxBOeqKIv6QumI'
+STRIPE_PUBLISHABLE = 'pk_test_pFVcBe81U0WqXjM5SgsP0TiJ'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -117,6 +117,9 @@ INSTALLED_APPS = (
     'payments',
     'south'
 )
+
+AUTH_USER_MODEL = 'payments.User'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

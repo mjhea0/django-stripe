@@ -14,7 +14,8 @@ class CardForm(PaymentForm):
     stripe_token = forms.CharField(required = True, widget = forms.HiddenInput())
   
 class UserForm(CardForm):
-    name = forms.CharField(required = True)
+    first_name = forms.CharField(required = True)
+    last_name = forms.CharField(required = True)
     email = forms.EmailField(required = True)
     password = forms.CharField(required = True, label=(u'Password'), widget=forms.PasswordInput(render_value=False))
     ver_password = forms.CharField(required = True, label=(u' Verify Password'), widget=forms.PasswordInput(render_value=False))

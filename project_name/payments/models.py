@@ -1,21 +1,22 @@
 from django.db import models
-import bcrypt
+from django.contrib.auth.models import UserManager, AbstractBaseUser, PermissionsMixin
 
-class User(models.Model):
-    name = models.CharField(max_length=255)
+class User(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=255, unique=True)
-    password = models.CharField(max_length=60)
     last_4_digits = models.CharField(max_length=4)
     stripe_id = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    date_joined = models.DateField(auto_now=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+    objects = UserManager()
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        return self.email
+        return self.username
 
-    def set_password(self, clear_password):
-        salt = bcrypt.gensalt(15)
-        self.password = bcrypt.hashpw(clear_password, salt)
-  
-    def check_password(self, clear_password):
-        return bcrypt.hashpw(clear_password, self.password) == self.password
