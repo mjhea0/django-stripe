@@ -62,7 +62,7 @@ def register(request):
             #update based on your billing method (subscription vs one time)
             customer = stripe.Customer.create(
               email = form.cleaned_data['email'],
-              description = form.cleaned_data['last_name'],
+              description = form.cleaned_data['email'],
               card = form.cleaned_data['stripe_token'],
               plan="gold",
             )
@@ -74,8 +74,6 @@ def register(request):
             # )
 
             user = User(
-                first_name = form.cleaned_data['first_name'],
-                last_name = form.cleaned_data['last_name'],
                 email = form.cleaned_data['email'],
                 last_4_digits = form.cleaned_data['last_4_digits'],
                 stripe_id = customer.id
